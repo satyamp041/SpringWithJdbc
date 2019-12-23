@@ -14,12 +14,16 @@ public class EmployeeJDBCTest {
 				"beans.xml");
 		EmployeeService employeeService = abstractApplicationContext.getBean(
 				"employeeService", EmployeeServiceImpl.class);
+		createEmployee(employeeService);
+		abstractApplicationContext.close();
+
+	}
+
+	private static void createEmployee(EmployeeService employeeService) {
 		Employee employee = new Employee();
 		employee.setEmployeeName("Satyam Patil");
 		employee.setEmail("satyampatil@gmail.com");
 		employeeService.addEmployee(employee);
-		abstractApplicationContext.close();
-
 	}
 
 }
